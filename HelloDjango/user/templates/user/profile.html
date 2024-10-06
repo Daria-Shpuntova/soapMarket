@@ -1,0 +1,44 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="conteiner profile">
+    <h2>{{ title }}</h2>
+    <strong>@{{ user.username }}</strong>
+    {% if user.email %}
+          <b>Email: {{ user.email }}</b>
+          {% endif %}
+
+    <br><br>
+    <div>
+    <form method="post" enctype="multipart/form-data" class="profil_form">
+        {% csrf_token %} <!--так не видна пользователю-->
+        {{ updateForm.as_p }}
+        {{ profileForm.as_p }}
+        <br>
+        <button class="btn-send" type="submit">Обновить</button>
+        <br>
+        <br>
+        <button class="btn-send"><a href="{% url 'password_change' %}">Изменить пароль</a></button>
+        <br>
+        <br>
+
+
+    </form>
+
+    <form class="form_exit" method="post" action="{% url 'exit' %}">
+            {% csrf_token %}
+            <button class="btn-send" type="submit">Выйти из аккаунта</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

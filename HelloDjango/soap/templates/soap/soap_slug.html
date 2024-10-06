@@ -1,0 +1,28 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% for a in aroma %}
+<p>#{{ a.name }}</p>
+{% endfor %}
+
+
+{% for i in type %}
+    <div class="type">
+        <p>{{ i.name }}</p>
+    </div>
+{% endfor %}
+
+
+{% for s in soap %}
+    <div class="type">
+        <p>{{ s.name }}</p>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

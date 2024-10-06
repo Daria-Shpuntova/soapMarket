@@ -1,0 +1,23 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="conteiner exit">
+    <h2>{{ title }}</h2>
+    <div class="e_form">
+
+        <form method="post">
+        {% csrf_token %} <!--так форма не видна пользователю-->
+
+        {{ form.as_p }}
+        <button class="btn-send" type="submit">Зарегестрироваться</button>
+        <hr>
+        <p id="reg_auth">Уже зарегистрированны?<a class="auth_h2_a" href="{% url 'enter' %}">Войти в личный кабинет</a></p>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

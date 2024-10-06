@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background: antiquewhite;
+            text-align: -webkit-center;
+        }
+        h2 {
+            color: #447309;
+            font-family: cursive;
+            font-size: 27px;
+        }
+        th {
+            border: solid 2px #41870a;
+        }
+        td{
+            border: solid 1px #41870a;
+        }
+        p {
+            font-size:25px;
+        }
+    </style>
+</head>
+<body>
+<h2>Ваш заказ {{ zakaz }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Продукт</th>
+                <th>Цена</th>
+                <th>Количество</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in basket %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.summ }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <div>
+            <p>Всего: {{ len }} продуктов, на общую стоимость: {{ allPrice }} руб.</p>
+        </div>
+
+
+
+
+
+
+</body>
+</html>

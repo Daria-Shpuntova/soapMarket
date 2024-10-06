@@ -1,0 +1,45 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block bask  %}
+{% if bask > 0 %}
+    <div id="bask_num" class="bask_num">{{ bask }}</div>
+{% endif %}
+{% endblock %}
+
+{% block katalog  %}
+        <div class="kat1"><a href="/all/">Перейти в каталог</a></div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="cont_prod">
+
+<div class="prod_cont">
+    <div class="prod_img">
+    <img src="../../../static/soap/prod/{{ name.img }}" alt="{{ name.img }}">
+    </div>
+    <div class="prod_text">
+        <h2>{{ name.name }}</h2>
+        <p>Стоимость {{ name.price }} руб.</p>
+        <p>Вес {{ name.weight }} грамм </p>
+
+        <p>{{ name.description }}</p>
+        <form class="callForm callForm2 form" id="BasketForm_{{ name.id }}" method="post">
+             {% csrf_token %}
+
+             <input type="hidden" name="quantity" id="id_quantity" class="form-b" value="1">
+  <!--           <p>{{ name.id }}</p>
+           <input name="quantity" id="id_quantity" class="form-b" value="1"> {{ form.as_p }}
+            <input name="product" id="id_product" class="form-b" value="{{ name.name }}"> !-->
+            <button class="btn-send" type="submit">В корзину</button>
+        </form>
+
+    </div>
+</div>
+</div>
+{% endblock %}
