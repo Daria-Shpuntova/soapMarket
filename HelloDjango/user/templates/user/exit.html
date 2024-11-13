@@ -1,0 +1,19 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="conteiner enter">
+    <h2>Вы успешно вышли из аккаунта</h2>
+    <div class="e_form">
+
+        <a class="auth_h2_a" href="{% url 'enter' %}">Войти в личный кабинет снова</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

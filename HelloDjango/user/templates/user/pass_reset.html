@@ -1,0 +1,22 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+Восстановление пароля
+{% endblock %}
+
+{% block content %}
+<div class="conteiner enter">
+    <h2>Восстановление пароля</h2>
+        <div class="send_form">
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+            <button class="btn-send" type="submit">Запросить новый пароль</button>
+            </form>
+        </div>
+</div>
+
+{% endblock %}
+
