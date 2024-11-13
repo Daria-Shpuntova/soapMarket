@@ -1,0 +1,159 @@
+{% extends 'soap/baze.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block bask  %}
+{% if bask > 0 %}
+    <div id="bask_num" class="bask_num">{{ bask }}</div>
+{% endif %}
+{% endblock %}
+
+{% block name  %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="cont" xmlns="">
+<div class="types_name">
+    <div class="type_name">
+    <a href="../../../all/">Вся продукция</a>
+    </div>
+{% for i in type %}
+    <div class="type_name">
+
+    {% if i.slug == name_type %}
+        <p class="type_name_this">{{ i.name }}</p>
+    {% else %}
+        <a href="../../../type/{{ i.slug }}/">{{ i.name }}</a>
+    {% endif %}
+
+    </div>
+{% endfor %}
+</div>
+
+
+<div class="prod_context">
+    <div class="for_show_filters">
+        <span>Фильтр</span>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="26" height="26" fill="#006400"/>
+            <path d="M8.08985 21.7142H6.63985C6.18985 21.7142 5.63985 21.7142 5.18985 21.7742C4.01985 21.8642 2.90985 22.0142 1.78985 22.1442C1.74389 22.1455 1.69862 22.1558 1.65665 22.1746C1.61468 22.1934 1.57683 22.2203 1.54525 22.2537C1.51368 22.2872 1.489 22.3265 1.47263 22.3695C1.45626 22.4124 1.44852 22.4582 1.44985 22.5042C1.45115 22.5501 1.46149 22.5954 1.48029 22.6374C1.49908 22.6794 1.52596 22.7172 1.5594 22.7488C1.59283 22.7804 1.63216 22.805 1.67513 22.8214C1.71811 22.8378 1.76389 22.8455 1.80985 22.8442C2.93985 22.9042 4.08985 22.9942 5.18985 23.0342H6.62985C7.06985 23.0342 7.62985 22.9642 8.06985 22.9642C10.2799 22.9642 10.3099 21.9642 9.71985 21.7842C9.17976 21.7115 8.63419 21.6881 8.08985 21.7142Z" fill="white"/>
+            <path d="M8.36022 13.7938C8.78022 13.8738 12.3602 13.8638 14.4502 13.9438C16.0402 14.0138 17.6302 14.0438 19.2202 14.0538C20.8102 14.0638 22.6602 14.0538 24.3802 13.9138C24.4846 13.9112 24.5838 13.8679 24.6566 13.7932C24.7295 13.7184 24.7703 13.6182 24.7702 13.5138C24.7651 13.4086 24.7196 13.3094 24.6433 13.2367C24.5669 13.1641 24.4656 13.1237 24.3602 13.1238C22.3602 13.1238 20.2802 12.9138 18.2402 12.7938C16.8802 12.7038 15.5002 12.6338 14.1302 12.6338C12.1712 12.6639 10.2152 12.7974 8.27022 13.0338C7.93022 13.1038 8.00022 13.7338 8.36022 13.7938Z" fill="white"/>
+            <path d="M19.2001 21.9841C19.109 21.9841 19.0214 22.0196 18.9561 22.0831C18.8907 22.1466 18.8527 22.233 18.8501 22.3241C18.8501 22.4169 18.887 22.506 18.9526 22.5716C19.0182 22.6372 19.1073 22.6741 19.2001 22.6741C19.8601 22.7741 20.4901 22.9041 21.1501 22.9741H21.9901H22.8301C23.4801 22.9141 24.1201 22.8141 24.8301 22.7441C24.9241 22.7291 25.0096 22.6811 25.0714 22.6087C25.1331 22.5363 25.167 22.4443 25.167 22.3491C25.167 22.254 25.1331 22.1619 25.0714 22.0895C25.0096 22.0171 24.9241 21.9691 24.8301 21.9541C24.1701 21.8841 23.5301 21.7741 22.8301 21.7241H21.9901C21.7105 21.7042 21.4297 21.7042 21.1501 21.7241C20.4901 21.7541 19.8601 21.8841 19.2001 21.9841Z" fill="white"/>
+            <path d="M7.6 4.36385H6.16C5.72 4.36385 5.16 4.36385 4.71 4.42385C3.58 4.52385 2.47 4.67385 1.35 4.80385C1.25717 4.80385 1.16815 4.84072 1.10251 4.90636C1.03687 4.972 1 5.06102 1 5.15385C1 5.24667 1.03687 5.3357 1.10251 5.40133C1.16815 5.46697 1.25717 5.50385 1.35 5.50385C2.48 5.56385 3.59 5.66385 4.72 5.69385H6.17C6.62 5.69385 7.17 5.62385 7.61 5.62385C9.82 5.62385 9.85 4.62385 9.26 4.45385C8.71129 4.36628 8.15496 4.33612 7.6 4.36385Z" fill="white"/>
+            <path d="M10.7503 21.854C10.7173 22.1447 10.7342 22.4389 10.8003 22.724C11.2103 24.854 12.8003 25.644 14.2003 25.344C17.9403 24.544 17.7203 17.204 13.2703 18.504C12.5577 18.737 11.9338 19.1833 11.4831 19.7825C11.0324 20.3816 10.7766 21.1047 10.7503 21.854ZM14.0203 24.204C13.0203 24.334 12.1103 23.714 12.0203 22.204C11.9439 21.6434 12.0608 21.0735 12.3516 20.5882C12.6425 20.1028 13.0899 19.731 13.6203 19.534C16.8103 18.394 16.9603 23.854 14.0203 24.204Z" fill="white"/>
+            <path d="M1.51014 13.9139C1.78014 16.364 3.51014 17.224 5.02014 16.914C5.70534 16.7585 6.31921 16.3792 6.76472 15.8359C7.21023 15.2926 7.46197 14.6163 7.48014 13.9139C7.64014 11.854 7.24014 9.20395 4.09014 10.124C3.29762 10.3752 2.61248 10.8854 2.14462 11.5727C1.67677 12.26 1.45333 13.0845 1.51014 13.9139ZM6.82014 13.2039C6.8778 13.8045 6.70231 14.4042 6.33 14.8788C5.9577 15.3535 5.4171 15.6669 4.82014 15.754C3.82014 15.884 2.91014 15.264 2.82014 13.754C2.74817 13.1926 2.86804 12.6233 3.1603 12.1387C3.45256 11.654 3.90005 11.2823 4.43014 11.084C7.09014 10.154 6.81014 13.2039 6.82014 13.2039Z" fill="white"/>
+            <path d="M10.3002 4.50388C10.2756 4.79525 10.2958 5.08866 10.3602 5.37388C10.7702 7.50389 12.3602 8.29389 13.7602 7.99389C17.5002 7.19389 17.2802 -0.146114 12.8302 1.15389C12.1165 1.38652 11.4913 1.83241 11.0389 2.43142C10.5865 3.03044 10.3287 3.75377 10.3002 4.50388ZM13.5702 6.89389C12.5702 7.02389 11.6602 6.40389 11.5702 4.89389C11.4934 4.32935 11.611 3.75548 11.9036 3.26662C12.1961 2.77775 12.6464 2.40298 13.1802 2.20389C16.3702 1.04389 16.5202 6.50389 13.5702 6.89389Z" fill="white"/>
+            <path d="M18.7602 4.63402C18.669 4.63399 18.5815 4.66948 18.5161 4.73298C18.4508 4.79647 18.4128 4.88294 18.4102 4.97402C18.4102 5.01999 18.4192 5.0655 18.4368 5.10796C18.4544 5.15043 18.4802 5.18901 18.5127 5.22151C18.5452 5.25401 18.5838 5.27979 18.6262 5.29738C18.6687 5.31497 18.7142 5.32402 18.7602 5.32402C19.4102 5.42402 20.0502 5.55402 20.7102 5.62402H21.5502H22.3802C23.0402 5.56402 23.6802 5.46402 24.3802 5.39402C24.4741 5.37903 24.5597 5.33102 24.6214 5.25862C24.6832 5.18622 24.7171 5.09418 24.7171 4.99902C24.7171 4.90386 24.6832 4.81182 24.6214 4.73943C24.5597 4.66703 24.4741 4.61902 24.3802 4.60402C23.7202 4.53402 23.0802 4.42402 22.3802 4.37402H21.5502C21.2705 4.35407 20.9898 4.35407 20.7102 4.37402C20.0902 4.40402 19.4202 4.53402 18.7602 4.63402Z" fill="white"/>
+        </svg>
+
+    </div>
+    <div class="filters">
+        <div class="filters_aroma">
+       <label><input type="checkbox" class="filter" value="all_a">Все ароматы</label>
+        {% for a in aroma %}
+        {% if a.slug == name_aroma %}
+            <label><input type="checkbox" class="filter" value="{{ a }}">{{ a.name }}</label>
+        {% else %}
+            <label><input type="checkbox" class="filter" value="{{ a }}">{{ a.name }}</label>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="skin">
+        <label><input type="checkbox" class="filter_skin" value="all_st">Для всех типов кожи</label>
+        {% for st in skin_type %}
+        {% if st.slug == skin_type %}
+            <label><input type="checkbox" class="filter_skin" value="{{ st }}">{{ st.name }}</label>
+        {% else %}
+            <label><input type="checkbox" class="filter_skin" value="{{ st }}">{{ st.name }}</label>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="effect">
+        <label><input type="checkbox" class="filter_effect" value="all_ef">Все эффекты</label>
+        {% for ef in effect %}
+        {% if ef.slug == effect %}
+            <label><input type="checkbox" class="filter_effect" value="{{ ef }}">{{ ef.name }}</label>
+        {% else %}
+            <label><input type="checkbox" class="filter_effect" value="{{ ef }}">{{ ef.name }}</label>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="ingredient">
+        <label><input type="checkbox" class="filter_ingredient" value="all_in">Все ингредиенты</label>
+        {% for in in ingredient %}
+        {% if in.slug == ingredient %}
+            <label><input type="checkbox" class="filter_ingredient" value="{{ in }}">{{ in.name }}</label>
+        {% else %}
+            <label><input type="checkbox" class="filter_ingredient" value="{{ in }}">{{ in.name }}</label>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="quantity">
+        <label><input type="checkbox" class="filter_quantity" value="all_q">В наличии</label>
+    </div>
+    </div>
+    <div class="prods">
+    {% for pr in prod %}
+        <div class="prod p_{{ pr.id }}" data-category="{{ pr.aroma_prod }}"  data-skintype="{{ pr.skin_type }}" data-effect="{{ pr.effect }}" data-ingredient="{{ pr.ingredient }}" data-quantity="{{ pr.quantity }}">
+        <p>{{ pr.name }}</p>
+
+            <a href="../../prod/{{ pr.slug }}/" style="background-image: url('../../../static/soap/prod/{{ pr.img }}');"></a>
+        <div class="price_basket">
+            {% if pr.quantity > 0 %}
+                <p>{{ pr.price }} руб. </p>
+                <form class="callForm callForm2 form_all" id="BasketForm_{{ pr.id }}" method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                    {{ form.product }}
+                    {{ form.quantity }}
+                    <button class="btn-basket" type="submit"><?xml version="1.0" encoding="UTF-8"?>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="7" cy="22" r="2"/><circle cx="17" cy="22" r="2"/>
+                                <path d="M19.75,13.162A2.5,2.5,0,0,1,17.339,15H7.217a.329.329,0,0,1-.325-.3L6.036,8H10.5A1.5,1.5,0,0,0,12,6.5h0A1.5,1.5,0,0,0,10.5,5H5.653L5.391,2.939A3.327,3.327,0,0,0,2.087,0H1.5a1.5,1.5,0,0,0,0,3h.587a.329.329,0,0,1,.325.3l1.5,11.76A3.327,3.327,0,0,0,7.217,18H17.339a5.5,5.5,0,0,0,5.3-4.042l.016-.06A1.5,1.5,0,0,0,21.213,12h0a1.5,1.5,0,0,0-1.446,1.1Z"/>
+                                <path d="M22.5,3H21V1.5a1.5,1.5,0,0,0-3,0V3H16.5a1.5,1.5,0,0,0,0,3H18V7.5a1.5,1.5,0,0,0,3,0V6h1.5a1.5,1.5,0,0,0,0-3Z"/>
+                            </svg>
+                    </button>
+                </form>
+            {% else %}
+            <p>Нет в наличии</p>
+
+            {% endif %}
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+</div>
+
+<!--<nav class="list-pages">
+    <ul>
+		{% if page_obj.has_previous %}
+	<li class="page-num">
+         <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+	</li>
+	{% endif %}
+
+        {% for p in paginator %}
+                {% if page_obj.number == p %}
+                    <li class="page-num page-num-selected">{{ p }}</li>
+                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                    <li class="page-num">
+                        <a href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                {% endif %}
+        {% endfor %}
+
+	{% if page_obj.has_next %}
+        <li class="page-num">
+            <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+        </li>
+    {% endif %}
+    </ul>
+
+</nav>-->
+
+</div>
+{% endblock %}
